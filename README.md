@@ -1,6 +1,8 @@
-Hamming Code
+# Hamming Code
 
-Hamming Code is an error-detection and correction method used in digital communications. The process follows these steps:
+## Description
+
+Hamming Code is an error-detection method used in digital communications. The process follows these steps:
 
 Redundancy Calculation: First, we determine the number of parity bits (r) to be added to the message. 
 The number of parity bits is calculated based on the formula: 
