@@ -7,7 +7,7 @@ Hamming Code is an error-detection method used in digital communications. The pr
 Redundancy Calculation: First, we determine the number of parity bits (r) to be added to the message. 
 The number of parity bits is calculated based on the formula: 
 2^r <= m+r+1, 
-𝑚 is the length of the original data string.
+m is the length of the original data string.
 
 -Positioning: These parity bits are placed at specific positions that are powers of two (e.g., 1, 2, 4, 8, …).
 
