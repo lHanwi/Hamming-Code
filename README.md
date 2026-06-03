@@ -1,15 +1,21 @@
 Hamming Code
-کد همینگ یک روش برای تشخیص خطا در پیام است
 
-در ابتدا r تا بیت توازن به پیام اضافه میکنیم.
-که بر اساس این فرمول مشخص می شود : 2^r <= m+r+1
-(و m طول رشته بیتی است)
-سپس بیت های توازن را در جایگاه های خاص (توان های 2 مثل 1, 2, 4, 8, ...) قرار میدهیم.
-هر بیت توازن یک گروه مشخص از بیت های داده شده را چک میکند.
-یعنی اگر بیت توازن در جایگاه 1 بود، یکی در میان بیت های 1 را میشمارد و اگر تعداد آنها زوج بود، مقدار آن برابر 0 میشود و اگر فرد بود مقدار برابر 1 میشود.
-بیت توازن در جایگاه 2، باید 2 تا 2 تا جلو برود و بیت های 1 را بشمارد.
-بقیه نیز به همین ترتیب پیش میروند...
-و در نهایت وفتی همه بیت های توازن محاسبه شدند، در پیام قرار میگیرند و پیام encode شده ارسال میشود.
+Hamming Code is an error-detection and correction method used in digital communications. The process follows these steps:
 
-دیتای دریافت شده توسط receiver دوباره با همین الگوریتم بررسی میشود.
-یعنی بیت های توازن محاسبه میشوند و اگر با بیت های توازن دریافت شده متفاوت باشند، یعنی در پیام خطایی رخ داده است.
+Redundancy Calculation: First, we determine the number of parity bits (r) to be added to the message. 
+The number of parity bits is calculated based on the formula: 
+2^r <= m+r+1, 
+𝑚 is the length of the original data string.
+
+-Positioning: These parity bits are placed at specific positions that are powers of two (e.g., 1, 2, 4, 8, …).
+
+-Parity Calculation: Each parity bit is responsible for checking a specific subset of the data bits. For example:
+The parity bit at position 1 checks every other bit (1, 3, 5, …). If the count of '1’s in this group is even, the parity bit is set to 0; if odd, it is set to 1.
+The parity bit at position 2 checks bits in a pattern of 2 (skipping two bits, checking two bits, etc.).
+This pattern continues for all subsequent parity positions.
+
+-Encoding: Once all parity bits are calculated, they are inserted into their respective positions, and the final encoded message is transmitted.
+
+
+Error Detection at the Receiver:
+When the receiver gets the data, it applies the same algorithm to recalculate the parity bits. If the newly calculated parity bits do not match the received parity bits, it indicates that an error has occurred during transmission.
